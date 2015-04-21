@@ -1,0 +1,23 @@
+﻿namespace Infrastructure.Models
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    public class WorkRequest
+    {
+        public int CpuBurstTime
+        {
+            get;
+            set;
+        }
+
+        public int IoBurstTime
+        {
+            get;
+            set;
+        }
+    }
+}
