@@ -13,7 +13,7 @@
             Process process;
             for (var currentTime = 0; scheduler.HasProcessToRun(); currentTime += 1)
             {
-                process = scheduler.GetProcessToRun();
+                process = scheduler.GetProcessToRun(currentTime);
                 if (null == process)
                 {
                     // This is bad... throw exception???

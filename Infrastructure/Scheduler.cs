@@ -5,7 +5,7 @@
 
     public abstract class Scheduler
     {
-        public abstract Process GetProcessToRun();
+        public abstract Process GetProcessToRun(int currentTime);
 
         public Scheduler(ProcessLoad processLoad)
         {

@@ -43,6 +43,7 @@
     <Compile Include="Cpu.cs" />
     <Compile Include="FirstComeFirstServed.cs" />
     <Compile Include="Io.cs" />
+    <Compile Include="RoundRobin.cs" />
     <Compile Include="Scheduler.cs" />
     <Compile Include="Process.cs" />
     <Compile Include="ProcessDispatcher.cs" />

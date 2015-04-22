@@ -7,7 +7,7 @@
     {
         public FirstComeFirstServed(ProcessLoad processLoad) : base(processLoad) { }
 
-        public override Process GetProcessToRun()
+        public override Process GetProcessToRun(int currentTime)
         {
             return this
                 .ProcessLoad

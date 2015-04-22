@@ -17,7 +17,7 @@
 
         public void Tick(int currentTime)
         {
-            var process = this.Scheduler.GetProcessToRun();
+            var process = this.Scheduler.GetProcessToRun(currentTime);
             if (null == process)
             {
                 return;
