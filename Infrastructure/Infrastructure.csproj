@@ -39,16 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\CpuRequest.cs" />
-    <Compile Include="Models\ProcessRequest.cs" />
-    <Compile Include="Models\WorkRequest.cs" />
+    <Compile Include="BurstCycle.cs" />
+    <Compile Include="Cpu.cs" />
+    <Compile Include="FirstComeFirstServed.cs" />
+    <Compile Include="Io.cs" />
+    <Compile Include="Scheduler.cs" />
+    <Compile Include="Process.cs" />
+    <Compile Include="ProcessDispatcher.cs" />
+    <Compile Include="ProcessLoad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Schedulers\Feedback.cs" />
-    <Compile Include="Schedulers\FirstComeFirstServed.cs" />
-    <Compile Include="Schedulers\ISchedule.cs" />
-    <Compile Include="Schedulers\RoundRobin.cs" />
-    <Compile Include="Schedulers\ShortestJobFirst.cs" />
-    <Compile Include="Schedulers\ShortestRemainingTime.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
