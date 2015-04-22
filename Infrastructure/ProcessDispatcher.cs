@@ -33,6 +33,11 @@
                         process.UpdateCurrentBurstCycle(currentTime);
                     }
                 }
+
+                if (process.IsCompleted)
+                {
+                    process.FinishTime = currentTime;
+                }
             }
 
             return scheduler.ProcessLoad;

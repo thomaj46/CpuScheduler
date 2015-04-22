@@ -27,10 +27,20 @@
             {
                 process.IsStarted = true;
                 process.StartTime = currentTime;
+            }
+
+            if (!process.CurrentBurstCycle.CpuBurstTimeIsStarted)
+            {
+                process.CurrentBurstCycle.CpuBurstTimeIsStarted = true;
                 process.CurrentBurstCycle.CpuBurstTimeStart = currentTime;
             }
 
             process.CurrentBurstCycle.CpuBurstTimeElapsed += 1;
+
+            if (process.CurrentBurstCycle.CpuBurstIsComplete)
+            {
+                process.CurrentBurstCycle.CpuBurstTimeFinished = currentTime;
+            }
         }
 
     }

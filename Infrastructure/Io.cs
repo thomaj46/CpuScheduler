@@ -28,13 +28,14 @@
                 return;
             }
 
-            process.CurrentBurstCycle.IoBurstTimeElapsed += 1;
-
-            if (0 == process.CurrentBurstCycle.IoBurstTimeElapsed)
+            if (!process.CurrentBurstCycle.IoBurstTimeIsStarted)
             {
+                process.CurrentBurstCycle.IoBurstTimeIsStarted = true;
                 process.CurrentBurstCycle.IoBurstTimeStart = currentTime;
             }
 
+            process.CurrentBurstCycle.IoBurstTimeElapsed += 1;
+        
             if (process.CurrentBurstCycle.IoBurstIsComplete)
             {
                 this.ProcessLoad.Dequeue();
