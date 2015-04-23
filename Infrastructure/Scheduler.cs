@@ -20,7 +20,7 @@
 
         public bool HasProcessToRun()
         {
-            return this.ProcessLoad.Processes.Any(p => !p.IsCompleted);
+            return this.ProcessLoad.Processes.Any(p => p.BurstCycles.Any(c => !c.CpuBurstIsComplete && !c.IoBurstIsComplete));
         }
     }
 }

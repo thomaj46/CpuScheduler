@@ -8,7 +8,7 @@
 
     public class ProcessLoad
     {
-        public IEnumerable<Process> Processes
+        public IList<Process> Processes
         {
             get;
             set;

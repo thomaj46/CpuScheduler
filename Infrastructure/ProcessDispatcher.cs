@@ -14,29 +14,27 @@
             for (var currentTime = 0; scheduler.HasProcessToRun(); currentTime += 1)
             {
                 process = scheduler.GetProcessToRun(currentTime);
-                if (null == process)
-                {
-                    // This is bad... throw exception???
-                }
-
-                cpu.Tick(currentTime);
+                cpu.Tick(currentTime, process);
                 io.Tick(currentTime);
 
-                if (process.CurrentBurstCycle.CpuBurstIsComplete)
+                if (null != process)
                 {
-                    if (process.CurrentBurstCycle.IoBurstTime > 0)
+                    if (process.CurrentBurstCycle.CpuBurstIsComplete)
                     {
-                        io.QueueProcess(process);
+                        if (process.CurrentBurstCycle.IoBurstTime > 0)
+                        {
+                            io.QueueProcess(process);
+                        }
+                        else
+                        {
+                            process.UpdateCurrentBurstCycle(currentTime);
+                        }
                     }
-                    else
-                    {
-                        process.UpdateCurrentBurstCycle(currentTime);
-                    }
-                }
 
-                if (process.IsCompleted)
-                {
-                    process.FinishTime = currentTime;
+                    if (process.IsCompleted)
+                    {
+                        process.FinishTime = currentTime;
+                    }
                 }
             }
 

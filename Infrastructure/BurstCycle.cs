@@ -10,6 +10,13 @@
     {
         public int CpuBurstTime { get; set; }
         public int CpuBurstTimeElapsed { get; set; }
+        public int CpuBurstTimeRemaining
+        {
+            get
+            {
+                return this.CpuBurstTime - this.CpuBurstTimeElapsed;
+            }
+        }
         public int CpuBurstTimeStart { get; set; }
         public int CpuBurstTimeFinished { get; set; }
         public bool CpuBurstTimeIsStarted { get; set; }
