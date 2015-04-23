@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Infrastructure;
 
 namespace CpuScheduler
 {
@@ -23,6 +24,14 @@ namespace CpuScheduler
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            int numprocs = Convert.ToInt32(txtNumOfProcs.Text);
+            var userin = new UserInput();
+            userin.makeProcesses(numprocs);
+
         }
     }
 }
