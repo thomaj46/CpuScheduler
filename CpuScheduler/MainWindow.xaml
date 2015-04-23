@@ -11,7 +11,7 @@
         <ProgressBar HorizontalAlignment="Left" Height="25" Margin="70,120,0,0" VerticalAlignment="Top" Width="265"/>
         <ProgressBar HorizontalAlignment="Left" Height="25" Margin="70,120,0,0" VerticalAlignment="Top" Width="265"/>
         <ProgressBar HorizontalAlignment="Left" Height="25" Margin="70,182,0,0" VerticalAlignment="Top" Width="265"/>
-        <ProgressBar HorizontalAlignment="Left" Height="25" Margin="70,120,0,0" VerticalAlignment="Top" Width="265"/>
+        <ProgressBar x:Name="pfcfs" HorizontalAlignment="Left" Height="25" Margin="70,120,0,0" VerticalAlignment="Top" Width="265"/>
         <ProgressBar HorizontalAlignment="Left" Height="25" Margin="70,250,0,0" VerticalAlignment="Top" Width="265"/>
         <ProgressBar HorizontalAlignment="Left" Height="25" Margin="70,325,0,0" VerticalAlignment="Top" Width="265"/>
         <ProgressBar HorizontalAlignment="Left" Height="25" Margin="70,397,0,0" VerticalAlignment="Top" Width="265"/>
@@ -20,6 +20,18 @@
         <Label Content="Feedback" HorizontalAlignment="Left" Margin="70,224,0,0" VerticalAlignment="Top" Width="86"/>
         <Label Content="SJFS not premetive" HorizontalAlignment="Left" Margin="70,299,0,0" VerticalAlignment="Top" Width="117"/>
         <Label Content="SJFS Pre-emptive" HorizontalAlignment="Left" Margin="70,371,0,0" VerticalAlignment="Top" Width="130"/>
+        <Label Content="Avg Wait &#xD;&#xA;time" HorizontalAlignment="Left" Margin="343,72,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.238,0.358" Height="43"/>
+        <Label x:Name="lfcfswait" Content="" HorizontalAlignment="Left" Margin="366,119,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.149,-0.164"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="366,182,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.149,-0.164"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="366,249,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.149,-0.164"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="366,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.149,-0.164"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="366,396,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.149,-0.164"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="444,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.149,-0.164"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="444,182,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.149,-0.164"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="444,249,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.149,-0.164"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="444,325,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.149,-0.164"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="444,397,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.149,-0.164"/>
+        <Label Content="Avg turnaround" HorizontalAlignment="Left" Margin="421,72,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.238,0.358" Height="43"/>
 
     </Grid>
 </Window>
