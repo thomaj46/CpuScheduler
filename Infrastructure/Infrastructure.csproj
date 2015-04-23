@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BurstCycle.cs" />
     <Compile Include="Cpu.cs" />
+    <Compile Include="Feedback.cs" />
     <Compile Include="FirstComeFirstServed.cs" />
     <Compile Include="Io.cs" />
     <Compile Include="RoundRobin.cs" />
