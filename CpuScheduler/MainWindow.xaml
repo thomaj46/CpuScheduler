@@ -32,6 +32,7 @@
         <Label Content="Label" HorizontalAlignment="Left" Margin="444,325,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.149,-0.164"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="444,397,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.149,-0.164"/>
         <Label Content="Avg turnaround" HorizontalAlignment="Left" Margin="421,72,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.238,0.358" Height="43"/>
+        <Label Content="CPU Utilization" HorizontalAlignment="Left" Margin="70,64,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

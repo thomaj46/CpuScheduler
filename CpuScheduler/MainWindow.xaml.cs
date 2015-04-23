@@ -90,8 +90,8 @@ namespace CpuScheduler
 
                 
             }
-            double myballs = Convert.ToDouble(arraycpu) / Convert.ToDouble(time2)*100.0;
-            Int32 total = Convert.ToInt32(myballs);
+            double cpuutil = Convert.ToDouble(arraycpu) / Convert.ToDouble(time2)*100.0;
+            Int32 total = Convert.ToInt32(cpuutil);
             pfcfs.Value = total;
 
             int waittime = (time2 - arrayio)/numprocs;
