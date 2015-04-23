@@ -21,7 +21,7 @@ namespace Infrastructure
 
 
         }
-        public void makeProcesses(int numOfProcesses)
+        public List<Process> makeProcesses(int numOfProcesses)
         {
 
 
@@ -68,7 +68,7 @@ namespace Infrastructure
             }
 
 
-           // ProcList.
+           return ProcList;
         }
     }
 }
