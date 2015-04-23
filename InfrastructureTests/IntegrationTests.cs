@@ -48,14 +48,19 @@
             var ioHistory = io.History;
 
             var runHistory = cpuHistory.Zip(ioHistory, (c, i) => new { CpuHistory = c, IoHistory = i });
-
+           
+            string header = String.Format("| {0,-12} | {1,-9:} | {2,-9:} |\n",
+                                    "Current Time", "Cpu Process", "IO Process");
+            Debug.WriteLine(header);
             foreach (var historyItem in runHistory)
             {
                 var time = historyItem.CpuHistory.Item1;
                 var cpuProcess = historyItem.CpuHistory.Item2;
                 var ioProcess = historyItem.IoHistory.Item2;
 
-                Debug.WriteLine("| {0,5:000} | {1,3} | {2,3} |", time, cpuProcess, ioProcess);
+                
+                string data = String.Format("| {0,-12:0000} | {1,-11} | {2,-10:G} |", time, cpuProcess, ioProcess);
+                Debug.WriteLine(data);
             }
 
             var x = 3;
