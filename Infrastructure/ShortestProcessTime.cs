@@ -3,9 +3,9 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class ShortestJobFirst : Scheduler
+    public class ShortestProcessTime : Scheduler
     {
-        public ShortestJobFirst(ProcessLoad processLoad) : base(processLoad)
+        public ShortestProcessTime(ProcessLoad processLoad) : base(processLoad)
         {
             this.ProcessesRunning = new List<Process>();
             this.ProcessesToRun = new Queue<Process>(processLoad.Processes.OrderBy(p => p.ArrivalTime));

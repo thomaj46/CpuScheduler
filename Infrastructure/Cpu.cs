@@ -8,16 +8,22 @@
 
     public class Cpu
     {
-        public Cpu(Scheduler scheduler)
+        public Cpu()
         {
-            this.Scheduler = scheduler;
+            this.History = new List<Tuple<int, int>>();
         }
 
-        public Scheduler Scheduler { get; set; }
-
-        public void Tick(int currentTime)
+        public List<Tuple<int, int>> History
         {
-            var process = this.Scheduler.GetProcessToRun(currentTime);
+            get;
+            set;
+        }
+
+        public void Tick(int currentTime, Process process)
+        {
+            var processId = (null == process) ? -1 : process.Id;
+            this.History.Add(new Tuple<int, int>(currentTime, processId));
+            
             if (null == process)
             {
                 return;

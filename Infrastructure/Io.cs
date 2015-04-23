@@ -11,9 +11,16 @@
         public Io()
         {
             this.ProcessLoad = new Queue<Process>();
+            this.History = new List<Tuple<int, int>>();
         }
 
         private Queue<Process> ProcessLoad { get; set; }
+
+        public List<Tuple<int, int>> History
+        {
+            get;
+            set;
+        }
 
         public void QueueProcess(Process process)
         {
@@ -23,6 +30,10 @@
         public void Tick(int currentTime)
         {
             var process = this.ProcessLoad.FirstOrDefault();
+            var processId = (null == process) ? -1 : process.Id;
+            this.History.Add(new Tuple<int, int>(currentTime, processId));
+
+
             if (null == process)
             {
                 return;
