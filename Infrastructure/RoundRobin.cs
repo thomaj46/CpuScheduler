@@ -11,16 +11,9 @@
         public RoundRobin(ProcessLoad processLoad, int runtime) : base(processLoad)
         {
             this.ProcessesRunning = new Queue<Process>();
-            this.ProcessesToRun = new Queue<Process>();
             this.ProcessRunTime = runtime;
-
-            foreach (var process in processLoad.Processes.OrderBy(p => p.ArrivalTime))
-            {
-                this.ProcessesToRun.Enqueue(process);
-            }
         }
 
-        public Queue<Process> ProcessesToRun { get; set; }
         public Queue<Process> ProcessesRunning { get; set; }
         private int ProcessRunTime { get; set; }
         private Process CurrentProcess { get; set; } 
@@ -29,9 +22,9 @@
 
         public override Process GetProcessToRun(int currentTime)
         {
-            while(this.ProcessesToRun.Any() && this.ProcessesToRun.Peek().ArrivalTime <= currentTime)
+            foreach (var process in this.ProcessLoad.Processes.Where(p => p.ArrivalTime == currentTime))
             {
-                this.ProcessesRunning.Enqueue(this.ProcessesToRun.Dequeue());
+                this.ProcessesRunning.Enqueue(process);
             }
 
             if (!this.ProcessesRunning.Any())

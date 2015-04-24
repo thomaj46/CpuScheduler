@@ -10,19 +10,11 @@
     {
         public Feedback(ProcessLoad processLoad) : base(processLoad)
         {
-            this.ProcessesToRun = new Queue<Process>();
             this.LevelOneQueue = new Queue<Process>();
             this.LevelTwoQueue = new Queue<Process>();
             this.LevelThreeQueue = new Queue<Process>();
             this.LevelFourQueue = new List<Process>();
-
-            foreach (var process in processLoad.Processes.OrderBy(p => p.ArrivalTime))
-            {
-                this.ProcessesToRun.Enqueue(process);
-            }
         }
-
-        private Queue<Process> ProcessesToRun { get; set; }
         private Queue<Process> LevelOneQueue { get; set; }
         private Queue<Process> LevelTwoQueue { get; set; }
         private Queue<Process> LevelThreeQueue { get; set; }
@@ -35,9 +27,9 @@
 
         public override Process GetProcessToRun(int currentTime)
         {
-            while (this.ProcessesToRun.Any() && this.ProcessesToRun.Peek().ArrivalTime <= currentTime)
+            foreach (var process in this.ProcessLoad.Processes.Where(p => p.ArrivalTime == currentTime))
             {
-                this.LevelOneQueue.Enqueue(this.ProcessesToRun.Dequeue());
+                this.LevelOneQueue.Enqueue(process);
             }
 
             this.SetCurrentProcessFromLevelOne(currentTime);

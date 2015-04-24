@@ -8,24 +8,16 @@
         public ShortestProcessTime(ProcessLoad processLoad) : base(processLoad)
         {
             this.ProcessesRunning = new List<Process>();
-            this.ProcessesToRun = new Queue<Process>();
-
-            foreach (var process in processLoad.Processes.OrderBy(p => p.ArrivalTime))
-            {
-                this.ProcessesToRun.Enqueue(process);
-            }
         }
 
         public List<Process> ProcessesRunning { get; set; }
         private Process CurrentProcess { get; set; }
-        public Queue<Process> ProcessesToRun { get; set; }
 
         public override Process GetProcessToRun(int currentTime)
         {
-            while (this.ProcessesToRun.Any() && this.ProcessesToRun.Peek().ArrivalTime <= currentTime)
+            foreach (var process in this.ProcessLoad.Processes.Where(p => p.ArrivalTime == currentTime))
             {
-                this.ProcessesRunning.Add(this.ProcessesToRun.Dequeue());
-
+                this.ProcessesRunning.Add(process);
             }
 
             if (null == this.CurrentProcess)
