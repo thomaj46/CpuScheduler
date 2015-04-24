@@ -57,5 +57,19 @@
 
             return new ProcessLoad { Processes = processes };
         }
+
+        public SummarizeOutput SummarizeOutput(Cpu cpu, Io io)
+        {
+            var processes = this.Processes;
+            var numberOfProcesses = processes.Count();
+            var output = new SummarizeOutput
+            {
+                AverageTurnaroundTime = processes.Sum(p => p.TurnaroundTime) / numberOfProcesses,
+                AverageWaitTime = io.History.Where(h => h.ProcessId == -1).Count() / numberOfProcesses,
+                CpuUtilization = (100 * cpu.History.Where(h => h.ProcessId != -1).Count()) / cpu.History.Count(),
+            };
+
+            return output;
+        }
     }
 }

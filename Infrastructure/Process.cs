@@ -18,8 +18,22 @@
         public int Id { get; set; }
         public int ArrivalTime { get; set; }
         public int StartTime { get; set; }
-        public int FinishTime { get; set; }
+        public int FinishTime
+        {
+            get
+            {
+                return this.BurstCycles.Last().IoBurstTimeFinished;
+            }
+        }
         public bool IsStarted { get; set; }
+
+        public int TurnaroundTime
+        {
+            get
+            {
+                return this.FinishTime - this.StartTime;
+            }
+        }
         
         public bool IsCompleted
         {

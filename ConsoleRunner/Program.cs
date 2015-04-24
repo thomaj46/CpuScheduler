@@ -24,7 +24,7 @@
             var runtime = 9;
             var schedulers = new List<Scheduler>
             {
-                new Feedback(feedbackProcessLoad),
+                //new Feedback(feedbackProcessLoad),
                 new FirstComeFirstServed(firstComeFirstServedProcessLoad),
                 new RoundRobin(roundRobinProcessLoad, runtime),
                 new ShortestProcessTime(shortestProcessTimeProcessLoad),

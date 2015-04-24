@@ -31,10 +31,10 @@
                         }
                     }
 
-                    if (process.IsCompleted)
-                    {
-                        process.FinishTime = currentTime;
-                    }
+                    //if (process.IsCompleted)
+                    //{
+                    //    process.FinishTime = currentTime;
+                    //}
                 }
             }
 
