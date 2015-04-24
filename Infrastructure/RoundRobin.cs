@@ -11,8 +11,13 @@
         public RoundRobin(ProcessLoad processLoad, int runtime) : base(processLoad)
         {
             this.ProcessesRunning = new Queue<Process>();
-            this.ProcessesToRun = new Queue<Process>(processLoad.Processes.OrderBy(p => p.ArrivalTime));
+            this.ProcessesToRun = new Queue<Process>();
             this.ProcessRunTime = runtime;
+
+            foreach (var process in processLoad.Processes.OrderBy(p => p.ArrivalTime))
+            {
+                this.ProcessesToRun.Enqueue(process);
+            }
         }
 
         public Queue<Process> ProcessesToRun { get; set; }
@@ -28,33 +33,27 @@
             {
                 this.ProcessesRunning.Enqueue(this.ProcessesToRun.Dequeue());
             }
-            
-            // Null check?
-            if (null != this.CurrentProcess)
+
+            if (!this.ProcessesRunning.Any())
             {
-                if (this.CurrentProcess.CurrentBurstCycle.CpuBurstIsComplete)
-                {
-                    this.CurrentProcess = (this.ProcessesRunning.Any()) ? this.ProcessesRunning.Dequeue() : null;
-                    this.CurrentProcessFinishTime = currentTime + this.ProcessRunTime;
-                }
-                else if (currentTime >= this.CurrentProcessFinishTime)
-                {
-                    this.ProcessesRunning.Enqueue(this.CurrentProcess);
-                    this.CurrentProcess = this.ProcessesRunning.Dequeue();
-                    this.CurrentProcessFinishTime = currentTime + this.ProcessRunTime;
-                }
+                this.CurrentProcess = null;
             }
-            else
+            else if (null == this.CurrentProcess)
             {
-                if (this.ProcessesRunning.Any())
-                {
-                    this.CurrentProcess = this.ProcessesRunning.Dequeue();
-                    this.CurrentProcessFinishTime = currentTime + this.ProcessRunTime;
-                }
-                else
-                {
-                    this.CurrentProcess = null;
-                }    
+                this.CurrentProcess = this.ProcessesRunning.FirstOrDefault();
+                this.CurrentProcessFinishTime = this.ProcessRunTime + currentTime;
+            }
+            else if (this.CurrentProcess.IsCompleted)
+            {
+                this.ProcessesRunning.Dequeue();
+                this.CurrentProcess = this.ProcessesRunning.FirstOrDefault();
+                this.CurrentProcessFinishTime = this.ProcessRunTime + currentTime;
+            }
+            else if (currentTime >= this.CurrentProcessFinishTime)
+            {
+                this.ProcessesRunning.Dequeue();
+                this.ProcessesRunning.Enqueue(this.CurrentProcess);
+                this.CurrentProcess = this.ProcessesRunning.FirstOrDefault();
             }
 
             return this.CurrentProcess;

@@ -10,10 +10,10 @@
     {
         public Cpu()
         {
-            this.History = new List<Tuple<int, int>>();
+            this.History = new List<HistoryItem>();
         }
 
-        public List<Tuple<int, int>> History
+        public List<HistoryItem> History
         {
             get;
             set;
@@ -21,14 +21,13 @@
 
         public void Tick(int currentTime, Process process)
         {
-            var processId = (null == process) ? -1 : process.Id;
-            this.History.Add(new Tuple<int, int>(currentTime, processId));
-            
             if (null == process)
             {
+                this.History.Add(new HistoryItem { Time = currentTime, ProcessId = -1 });
                 return;
             }
 
+            this.History.Add(new HistoryItem { Time = currentTime, ProcessId = process.Id });
             if (!process.IsStarted)
             {
                 process.IsStarted = true;

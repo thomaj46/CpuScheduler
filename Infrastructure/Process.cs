@@ -20,7 +20,15 @@
         public int StartTime { get; set; }
         public int FinishTime { get; set; }
         public bool IsStarted { get; set; }
-        public bool IsCompleted { get; set; }
+        
+        public bool IsCompleted
+        {
+            get
+            {
+                return this.BurstCycles.All(b => b.CpuBurstIsComplete && b.IoBurstIsComplete);
+            }
+        }
+
         public BurstCycle CurrentBurstCycle { get; set; }
         public IEnumerable<BurstCycle> BurstCycles { get; set; }
         private Queue<BurstCycle> BurstCyclesRemaining { get; set; }
@@ -30,10 +38,6 @@
             {
                 this.CurrentBurstCycle = this.BurstCyclesRemaining.Dequeue();
                 this.ArrivalTime = currentTime;
-            }
-            else
-            {
-                this.IsCompleted = this.CurrentBurstCycle.CpuBurstIsComplete && this.CurrentBurstCycle.IoBurstIsComplete;
             }
         }
     }

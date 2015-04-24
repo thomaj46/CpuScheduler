@@ -56,40 +56,9 @@ namespace CpuScheduler
             var cpuHistory = cpu.History;
             var ioHistory = io.History;
 
-          //  var cputime
-
-            var runHistory = cpuHistory.Zip(ioHistory, (c, i) => new { CpuHistory = c, IoHistory = i });
-
-            string header = String.Format("| {0,-12} | {1,-9:} | {2,-9:} |\n",
-                                    "Current Time", "Cpu Process", "IO Process");
-            Console.WriteLine(header);
-            foreach (var historyItem in runHistory)
-            {
-                var time = historyItem.CpuHistory.Item1;
-
-                time2 = time;
-
-                var cpuProcess = historyItem.CpuHistory.Item2;
-
-                 if (cpuProcess != -1)
-                 {
-                     arraycpu += 1;
-                 }
-                         
-
-
-                var ioProcess = historyItem.IoHistory.Item2;
-
-                if (ioProcess != -1)
-                 {
-                     arrayio += 1;
-                 }
-
-                string data = String.Format("| {0,-12:0000} | {1,-11} | {2,-10:G} |", time, cpuProcess, ioProcess);
-                Console.WriteLine(data);
-
-                
-            }
+            var consoleOutput = new ConsoleOutput();
+            consoleOutput.PrintHistory(cpuHistory, ioHistory);
+            
             double cpuutil = Convert.ToDouble(arraycpu) / Convert.ToDouble(time2)*100.0;
             Int32 total = Convert.ToInt32(cpuutil);
             pfcfs.Value = total;

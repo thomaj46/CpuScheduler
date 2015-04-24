@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A6836896-72E6-4D40-9767-421EE85D43EF}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{31E79390-8FD7-41C3-805A-688C48587515}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Infrastructure</RootNamespace>
-    <AssemblyName>Infrastructure</AssemblyName>
+    <RootNamespace>ConsoleRunner</RootNamespace>
+    <AssemblyName>ConsoleRunner</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,22 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BurstCycle.cs" />
-    <Compile Include="ConsoleOutput.cs" />
-    <Compile Include="Cpu.cs" />
-    <Compile Include="Feedback.cs" />
-    <Compile Include="FirstComeFirstServed.cs" />
-    <Compile Include="HistoryItem.cs" />
-    <Compile Include="Io.cs" />
-    <Compile Include="RoundRobin.cs" />
-    <Compile Include="Scheduler.cs" />
-    <Compile Include="Process.cs" />
-    <Compile Include="ProcessDispatcher.cs" />
-    <Compile Include="ProcessLoad.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShortestProcessTime.cs" />
-    <Compile Include="ShortestRemainingTime.cs" />
-    <Compile Include="UserInput.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{a6836896-72e6-4d40-9767-421ee85d43ef}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,6 +14,7 @@
                 .Processes
                 .Where(p => !p.IsCompleted)
                 .Where(p => !p.CurrentBurstCycle.CpuBurstIsComplete)
+                .Where(p => p.ArrivalTime <= currentTime)
                 .OrderBy(p => p.ArrivalTime)
                 .FirstOrDefault();
         }

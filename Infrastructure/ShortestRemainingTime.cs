@@ -12,7 +12,12 @@
             : base(processLoad)
         {
             this.ProcessesRunning = new List<Process>();
-            this.ProcessesToRun = new Queue<Process>(processLoad.Processes.OrderBy(p => p.ArrivalTime));
+            this.ProcessesToRun = new Queue<Process>();
+
+            foreach (var process in processLoad.Processes.OrderBy(p => p.ArrivalTime))
+            {
+                this.ProcessesToRun.Enqueue(process);
+            }
         }
 
         public Queue<Process> ProcessesToRun { get; set; }
@@ -26,7 +31,7 @@
                 this.ProcessesRunning.Add(this.ProcessesToRun.Dequeue());
             }
 
-            if (null != this.CurrentProcess && this.CurrentProcess.BurstCycles.All(c => c.CpuBurstIsComplete))
+            if (null != this.CurrentProcess && this.CurrentProcess.IsCompleted)
             {
                 this.ProcessesRunning.Remove(this.CurrentProcess);
             }
