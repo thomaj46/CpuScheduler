@@ -38,6 +38,10 @@
                  this.ProcessesRunning.Remove(this.CurrentProcess);
                  this.CurrentProcess = this.ProcessesRunning.OrderBy(p => p.CurrentBurstCycle.CpuBurstTime).FirstOrDefault();
             } 
+            else if (this.CurrentProcess.CurrentBurstCycle.CpuBurstIsComplete)
+            {
+                this.CurrentProcess = null;
+            }
 
             return this.CurrentProcess;
         }

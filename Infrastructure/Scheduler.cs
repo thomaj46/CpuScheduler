@@ -9,7 +9,7 @@
 
         public Scheduler(ProcessLoad processLoad)
         {
-            this.ProcessLoad = processLoad.Clone();
+            this.ProcessLoad = processLoad.DeepCopy();
         }
 
         public ProcessLoad ProcessLoad

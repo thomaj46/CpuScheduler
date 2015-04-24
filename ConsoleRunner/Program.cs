@@ -15,19 +15,19 @@
             Console.WriteLine("Enter number of processes to simulate...");
             var totalProcesses = Convert.ToInt32(Console.ReadLine());
             var processLoad = ProcessLoad.Create(totalProcesses);
-            var feedbackProcessLoad = processLoad.Clone();
-            var firstComeFirstServedProcessLoad = processLoad.Clone();
-            var roundRobinProcessLoad = processLoad.Clone();
-            var shortestProcessTimeProcessLoad = processLoad.Clone();
-            var shortestRemainingTimeProcessLoad = processLoad.Clone();
+            var feedbackProcessLoad = processLoad.DeepCopy();
+            var firstComeFirstServedProcessLoad = processLoad.DeepCopy();
+            var roundRobinProcessLoad = processLoad.DeepCopy();
+            var shortestProcessTimeProcessLoad = processLoad.DeepCopy();
+            var shortestRemainingTimeProcessLoad = processLoad.DeepCopy();
 
             var runtime = 9;
             var schedulers = new List<Scheduler>
             {
                 //new Feedback(feedbackProcessLoad),
-                new FirstComeFirstServed(firstComeFirstServedProcessLoad),
-                new RoundRobin(roundRobinProcessLoad, runtime),
-                new ShortestProcessTime(shortestProcessTimeProcessLoad),
+                //new FirstComeFirstServed(firstComeFirstServedProcessLoad),
+                //new RoundRobin(roundRobinProcessLoad, runtime),
+                //new ShortestProcessTime(shortestProcessTimeProcessLoad),
                 new ShortestRemainingTime(shortestRemainingTimeProcessLoad),
             };
 

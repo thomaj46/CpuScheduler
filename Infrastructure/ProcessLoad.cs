@@ -14,13 +14,26 @@
             set;
         }
 
-        public ProcessLoad Clone()
+        public ProcessLoad DeepCopy()
         {
             var processes = this.Processes
-                .Select(p => new Process(new List<BurstCycle>(p.BurstCycles))
+                .Select(p => 
                     {
-                        ArrivalTime = p.ArrivalTime,
-                        Id = p.Id,
+                        var burstCycles = p.BurstCycles
+                            .Select(bc => new BurstCycle
+                                {
+                                    CpuBurstTime = bc.CpuBurstTime,
+                                    IoBurstTime = bc.IoBurstTime,
+                                })
+                            .ToList();
+                        
+                        var process = new Process(burstCycles)
+                        {
+                            ArrivalTime = p.ArrivalTime,
+                            Id = p.Id,
+                        };
+
+                        return process;
                     })
                 .ToList();
 
